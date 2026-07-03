@@ -9,9 +9,9 @@ import Prose from '@/components/Prose';
 import { ChapterMeta, chaptersZh } from '@/data/chapters';
 
 interface ChapterPageProps {
-  params: {
+  params: Promise<{
     chapter: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -23,7 +23,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ChapterPageProps) {
-  const chapter = chaptersZh.find(c => c.id === params.chapter);
+  const { chapter: chapterId } = await params;
+  const chapter = chaptersZh.find(c => c.id === chapterId);
   if (!chapter) {
     return { title: 'Chapter Not Found' };
   }
@@ -33,7 +34,11 @@ export async function generateMetadata({ params }: ChapterPageProps) {
   };
 }
 
-async function getChapterContent(chapterId: string): Promise<string> {
+async function getChapterContent(chapterId: string | undefined): Promise<string> {
+  if (!chapterId) {
+    return '# Chapter Not Found\n\nNo chapter ID was provided.';
+  }
+  
   const filePath = path.join(
     process.cwd(),
     'data',
@@ -47,16 +52,17 @@ async function getChapterContent(chapterId: string): Promise<string> {
     return content;
   } catch (error) {
     console.error(`Error reading chapter file: ${filePath}`, error);
-    return '# Chapter Not Found\n\nThe requested chapter could not be loaded.';
+    return `# Chapter Not Found\n\nThe chapter file "${chapterId}.md" could not be loaded.`;
   }
 }
 
 export default async function ChapterPage({ params }: ChapterPageProps) {
-  const chapter = chaptersZh.find(c => c.id === params.chapter);
-  const content = await getChapterContent(params.chapter);
+  const { chapter: chapterId } = await params;
+  const chapter = chaptersZh.find(c => c.id === chapterId);
+  const content = await getChapterContent(chapterId);
   
   // Find previous and next chapters
-  const currentIndex = chaptersZh.findIndex(c => c.id === params.chapter);
+  const currentIndex = chaptersZh.findIndex(c => c.id === chapterId);
   const prevChapter = currentIndex > 0 ? chaptersZh[currentIndex - 1] : null;
   const nextChapter = currentIndex < chaptersZh.length - 1 ? chaptersZh[currentIndex + 1] : null;
 
