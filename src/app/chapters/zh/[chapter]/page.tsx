@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Container from '@/components/Container';
 import Prose from '@/components/Prose';
+import TermHighlight from '@/components/TermHighlight';
 import { ChapterMeta, chaptersZh } from '@/data/chapters';
 
 interface ChapterPageProps {
@@ -56,6 +57,43 @@ async function getChapterContent(chapterId: string | undefined): Promise<string>
   }
 }
 
+/**
+ * Custom Markdown components that wrap text-containing elements with TermHighlight
+ * This enables auto-highlighting of terms in chapter content
+ */
+type MarkdownComponentProps = {
+  children?: React.ReactNode;
+  [key: string]: unknown;
+};
+
+const createHighlightedComponent = (Tag: React.ElementType) => {
+  const Component = ({ children, ...props }: MarkdownComponentProps) => {
+    return (
+      <Tag {...props}>
+        <TermHighlight>{children}</TermHighlight>
+      </Tag>
+    );
+  };
+  Component.displayName = `Highlighted(${typeof Tag === 'string' ? Tag : 'Component'})`;
+  return Component as React.ComponentType<any>;
+};
+
+const markdownComponents = {
+  p: createHighlightedComponent('p'),
+  li: createHighlightedComponent('li'),
+  h1: createHighlightedComponent('h1'),
+  h2: createHighlightedComponent('h2'),
+  h3: createHighlightedComponent('h3'),
+  h4: createHighlightedComponent('h4'),
+  h5: createHighlightedComponent('h5'),
+  h6: createHighlightedComponent('h6'),
+  blockquote: createHighlightedComponent('blockquote'),
+  td: createHighlightedComponent('td'),
+  th: createHighlightedComponent('th'),
+  em: createHighlightedComponent('em'),
+  strong: createHighlightedComponent('strong'),
+};
+
 export default async function ChapterPage({ params }: ChapterPageProps) {
   const { chapter: chapterId } = await params;
   const chapter = chaptersZh.find(c => c.id === chapterId);
@@ -87,7 +125,11 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         {/* Chapter Content */}
         <Prose>
           <div className="chapter-content">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]} 
+              rehypePlugins={[rehypeHighlight]}
+              components={markdownComponents}
+            >
               {content}
             </ReactMarkdown>
           </div>

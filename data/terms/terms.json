@@ -1,0 +1,239 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-07-03",
+  "terms": [
+    {
+      "id": "tteg",
+      "category": "author_concept",
+      "nameZh": "热-时治理理论",
+      "nameEn": "Thermal-Time-Environment Governance (TTEG)",
+      "abbr": "TTEG",
+      "definition": "以热流、时间节律与反馈机制为核心的全球气候治理理论框架",
+      "detailedDefinition": "TTEG理论认为，气候问题的核心不仅在于'排放量'，而在于'热扰动的节律'和'生态系统的响应时间'失衡。从城市夜间热岛效应，到区域水汽路径的改变，人类行为的'热-时间'分布正在重构自然节奏。TTEG理论试图以热流、时间节律与反馈机制为核心，重新规划城市、产业与生态边界的治理逻辑。",
+      "relatedTerms": ["czrm", "ai-esg", "thermal-disturbance", "temporal-rhythm"]
+    },
+    {
+      "id": "czrm",
+      "category": "author_concept",
+      "nameZh": "气候带责任机制",
+      "nameEn": "Climatic-Zonal Responsibility Mechanism (CZRM)",
+      "abbr": "CZRM",
+      "definition": "基于全球气候带分布的责任分配机制",
+      "detailedDefinition": "CZRM机制主张，气候责任分配应基于全球气候带分布特征，考虑不同气候区的生态脆弱性、排放历史和适应能力，建立差异化的责任分担体系。",
+      "relatedTerms": ["tteg", "climate-zone", "common-but-differentiated-responsibilities"]
+    },
+    {
+      "id": "2-8-70-architecture",
+      "category": "author_concept",
+      "nameZh": "2-8-70文明架构",
+      "nameEn": "2-8-70 Civilization Architecture",
+      "abbr": "2-8-70",
+      "definition": "新的全球结构认知模型：中欧双核、8个制度主权核心、70%广泛地带",
+      "detailedDefinition": "2-8-70文明架构是一个全球结构认知模型：'2'指中欧作为双核文明体；'8'指全球现有制度主权核心（G7+中印）构成规则输出的制度集群；'70'指剩余全球人口所在的广泛地带，既是气候冲击的第一线，也是星际文明转型前夜治理能力最薄弱之处。",
+      "relatedTerms": ["joint-climate-leadership", "symbiotic-order", "global-governance"]
+    },
+    {
+      "id": "joint-climate-leadership",
+      "category": "author_concept",
+      "nameZh": "联合气候领导力",
+      "nameEn": "Joint Climate Leadership",
+      "definition": "中欧文明深度融合下的全球气候领导力形态",
+      "detailedDefinition": "当中国（拥有广袤的生态底盘、复杂的地理结构与强大的系统执行能力）与欧洲（拥有深厚的制度设计经验、哲学传统与公共价值框架）这两种文明逻辑真正融合，共同面对'如何理解未来'的根本命题时，真正的'联合气候领导力'才可能出现。",
+      "relatedTerms": ["2-8-70-architecture", "ecological-civilization", "public-value-framework"]
+    },
+    {
+      "id": "symbiotic-order",
+      "category": "author_concept",
+      "nameZh": "共生秩序",
+      "nameEn": "Symbiotic Order",
+      "definition": "由2推动8、以8服务70的全球共生秩序",
+      "detailedDefinition": "构建共生秩序的关键，并非某种强权输出，也非新冷战式制度排他，而是基于AI时代的共同判断力结构重建。一个由2推动8，以8服务70的共生秩序，是迎接星际文明序章的前提。",
+      "relatedTerms": ["2-8-70-architecture", "ai-era", "shared-future"]
+    },
+    {
+      "id": "shared-future",
+      "category": "author_concept",
+      "nameZh": "人类命运共同体",
+      "nameEn": "Community of Shared Future for Humanity",
+      "definition": "应对全球气候挑战的共同价值框架",
+      "detailedDefinition": "中欧文明的深度融合、TTEG理论的制度转译力，以及对全球70%人口所构建的共管治理机制，能为即将到来的气候新时代与人类命运共同体提供一份真实、可行、共同的精神框架。",
+      "relatedTerms": ["joint-climate-leadership", "ecological-civilization"]
+    },
+    {
+      "id": "ecological-civilization",
+      "category": "author_concept",
+      "nameZh": "生态文明",
+      "nameEn": "Ecological Civilization",
+      "definition": "人类文明形态从工业文明向生态文明的转型",
+      "detailedDefinition": "气候领导力决定了我们在当前全球秩序转型的关键窗口期内，是否能够真正引导一种新的生态文明秩序的诞生。生态文明强调人与自然和谐共生，是应对气候危机的文明形态转型方向。",
+      "relatedTerms": ["joint-climate-leadership", "ai-esg"]
+    },
+    {
+      "id": "ai-esg",
+      "category": "technical",
+      "nameZh": "AI-ESG",
+      "nameEn": "AI-ESG Integration",
+      "abbr": "AI-ESG",
+      "definition": "人工智能与环境、社会、治理的融合框架",
+      "detailedDefinition": "AI-ESG是指将人工智能技术深度整合到ESG（环境、社会、治理）框架中，通过AI赋能气候治理、社会责任履行和治理结构优化。AI不只是工具，更是制度催化器。",
+      "relatedTerms": ["tteg", "distributed-governance", "green-finance"]
+    },
+    {
+      "id": "thermal-disturbance",
+      "category": "climate_science",
+      "nameZh": "热扰动",
+      "nameEn": "Thermal Disturbance",
+      "definition": "人类活动导致的地球系统热平衡变化",
+      "detailedDefinition": "热扰动是指人类活动（如温室气体排放、城市化、土地利用变化）导致的地球系统热平衡变化，包括温度升高、热岛效应、热通量改变等。气候问题的核心在于'热扰动的节律'失衡。",
+      "relatedTerms": ["tteg", "urban-heat-island", "temporal-rhythm"]
+    },
+    {
+      "id": "temporal-rhythm",
+      "category": "climate_science",
+      "nameZh": "时间节律",
+      "nameEn": "Temporal Rhythm",
+      "definition": "自然生态系统的时间响应规律",
+      "detailedDefinition": "时间节律是指自然生态系统的时间响应规律，包括昼夜节律、季节节律、年际变化等。'生态系统的响应时间'失衡是气候问题的核心之一，TTEG理论强调重建人类行为的'热-时间'分布。",
+      "relatedTerms": ["tteg", "thermal-disturbance", "ecosystem-response"]
+    },
+    {
+      "id": "ecosystem-response",
+      "category": "climate_science",
+      "nameZh": "生态系统响应",
+      "nameEn": "Ecosystem Response",
+      "definition": "生态系统对气候变化的反馈机制",
+      "detailedDefinition": "生态系统响应是指生态系统对气候变化的反馈机制，包括生物多样性变化、水循环改变、碳汇功能变化等。'生态系统的响应时间'与'热扰动的节律'失衡是气候治理的关键。",
+      "relatedTerms": ["tteg", "temporal-rhythm", "water-vapor-pathway"]
+    },
+    {
+      "id": "urban-heat-island",
+      "category": "climate_science",
+      "nameZh": "城市热岛效应",
+      "nameEn": "Urban Heat Island Effect",
+      "abbr": "UHI",
+      "definition": "城市区域温度高于周边地区的现象",
+      "detailedDefinition": "城市热岛效应是指城市区域由于人类活动、建筑物吸热、植被减少等原因，温度高于周边农村地区的现象。从城市夜间热岛效应到区域水汽路径的改变，人类行为的'热-时间'分布正在重构自然节奏。",
+      "relatedTerms": ["thermal-disturbance", "tteg"]
+    },
+    {
+      "id": "water-vapor-pathway",
+      "category": "climate_science",
+      "nameZh": "水汽路径",
+      "nameEn": "Water Vapor Pathway",
+      "definition": "大气中水汽输送的路径",
+      "detailedDefinition": "水汽路径是指大气中水汽输送的路径，受气候变化影响，区域水汽路径正在发生改变，与热岛效应共同构成人类活动对气候系统影响的重要表征。",
+      "relatedTerms": ["tteg", "urban-heat-island", "ecosystem-response"]
+    },
+    {
+      "id": "eu-green-deal",
+      "category": "eu_policy",
+      "nameZh": "欧盟绿色协议",
+      "nameEn": "European Green Deal",
+      "definition": "欧盟2050年实现气候中和的综合政策框架",
+      "detailedDefinition": "欧盟绿色协议是欧盟于2019年提出的综合政策框架，旨在通过清洁能源、循环经济、可持续交通、建筑改造等措施，到2050年实现欧洲气候中和。它是全球最具雄心的气候政策实验。",
+      "relatedTerms": ["cbam", "fit-for-55", "eu-ets"]
+    },
+    {
+      "id": "cbam",
+      "category": "eu_policy",
+      "nameZh": "碳边境调节机制",
+      "nameEn": "Carbon Border Adjustment Mechanism",
+      "abbr": "CBAM",
+      "definition": "欧盟对进口商品征收碳排放费用的机制",
+      "detailedDefinition": "碳边境调节机制（CBAM）是欧盟绿色协议的核心政策工具之一，对从碳排放标准较宽松国家/地区进口的钢铁、水泥、铝、化肥、电力等产品征收碳排放费用，以防止'碳泄漏'。",
+      "relatedTerms": ["eu-green-deal", "eu-ets", "carbon-leakage"]
+    },
+    {
+      "id": "fit-for-55",
+      "category": "eu_policy",
+      "nameZh": "减碳55%一揽子计划",
+      "nameEn": "Fit for 55",
+      "definition": "欧盟2030年温室气体减排55%的立法包",
+      "detailedDefinition": "Fit for 55是欧盟绿色协议的核心立法包，目标是到2030年将欧盟温室气体排放量在1990年基础上减少55%，涵盖能源、工业、交通、建筑、林业等多个领域的法律修订。",
+      "relatedTerms": ["eu-green-deal", "eu-ets", "cbam"]
+    },
+    {
+      "id": "eu-ets",
+      "category": "eu_policy",
+      "nameZh": "欧盟排放交易体系",
+      "nameEn": "EU Emissions Trading System",
+      "abbr": "EU ETS",
+      "definition": "欧盟碳排放权交易市场",
+      "detailedDefinition": "欧盟排放交易体系（EU ETS）是全球最大的碳排放权交易市场，采用'总量管制与交易'（Cap and Trade）机制，覆盖电力、工业、航空等行业的温室气体排放。",
+      "relatedTerms": ["cbam", "fit-for-55", "carbon-market"]
+    },
+    {
+      "id": "repower-eu",
+      "category": "eu_policy",
+      "nameZh": "REPowerEU计划",
+      "nameEn": "REPowerEU Plan",
+      "definition": "欧盟能源独立和加速清洁能源转型的计划",
+      "detailedDefinition": "REPowerEU是欧盟于2022年提出的能源计划，旨在通过加速可再生能源部署、提高能效、推进能源供应多元化等措施，减少对俄罗斯化石燃料的依赖，同时加速气候中和进程。",
+      "relatedTerms": ["eu-green-deal", "renewable-energy", "energy-security"]
+    },
+    {
+      "id": "common-but-differentiated-responsibilities",
+      "category": "eu_policy",
+      "nameZh": "共同但有区别的责任",
+      "nameEn": "Common But Differentiated Responsibilities",
+      "abbr": "CBDR",
+      "definition": "国际气候治理的核心原则",
+      "detailedDefinition": "共同但有区别的责任（CBDR）是1992年《联合国气候变化框架公约》确立的核心原则，承认所有国家都有应对气候变化的责任，但考虑到各国历史责任和能力差异，应承担有区别的责任和行动。",
+      "relatedTerms": ["czrm", "global-south", "climate-justice"]
+    },
+    {
+      "id": "global-south",
+      "category": "technical",
+      "nameZh": "全球南方",
+      "nameEn": "Global South",
+      "definition": "发展中国家和经济体的集合概念",
+      "detailedDefinition": "全球南方是指发展中国家、新兴经济体和最不发达国家的集合概念，与'全球北方'（发达国家）相对。全球南方与北方之间的责任机制必须重组，是气候治理的关键议题。",
+      "relatedTerms": ["common-but-differentiated-responsibilities", "climate-justice"]
+    },
+    {
+      "id": "distributed-governance",
+      "category": "technical",
+      "nameZh": "分布式治理",
+      "nameEn": "Distributed Governance",
+      "definition": "去中心化的多主体协同治理模式",
+      "detailedDefinition": "分布式治理是指通过去中心化的方式，让政府、企业、社区、个人等多主体协同参与治理的模式。不只是数字转型，更是生态与社会治理方式的结构重设。",
+      "relatedTerms": ["ai-esg", "digital-transformation"]
+    },
+    {
+      "id": "green-finance",
+      "category": "technical",
+      "nameZh": "绿色金融",
+      "nameEn": "Green Finance",
+      "definition": "支持环境改善和气候应对的金融活动",
+      "detailedDefinition": "绿色金融是指为支持环境改善、应对气候变化和资源节约高效利用的金融活动，包括绿色信贷、绿色债券、绿色基金、碳金融等多种形式。",
+      "relatedTerms": ["ai-esg", "carbon-market", "sustainable-finance"]
+    },
+    {
+      "id": "public-value-framework",
+      "category": "author_concept",
+      "nameZh": "公共价值框架",
+      "nameEn": "Public Value Framework",
+      "definition": "欧洲治理传统的核心制度设计经验",
+      "detailedDefinition": "欧洲拥有深厚的制度设计经验、哲学传统与公共价值框架，是全球气候制度创新的实验场。公共价值框架强调治理活动应创造公共福祉、维护社会公平、促进可持续发展。",
+      "relatedTerms": ["joint-climate-leadership", "ecological-civilization"]
+    },
+    {
+      "id": "resource-redistribution",
+      "category": "author_concept",
+      "nameZh": "资源再分配",
+      "nameEn": "Resource Redistribution",
+      "definition": "面向未来发展权的全球资源再分配机制",
+      "detailedDefinition": "我们可以把未来的发展理解为一个巨大的资源再分配机制。这种分配不再依赖传统的领土、资本或军事，而取决于谁能更早判断未来，谁能更早组织起符合未来秩序的系统。",
+      "relatedTerms": ["2-8-70-architecture", "future-judgment"]
+    },
+    {
+      "id": "future-judgment",
+      "category": "author_concept",
+      "nameZh": "未来判断力",
+      "nameEn": "Future Judgment",
+      "definition": "对人类未来发展轨迹的深刻判断能力",
+      "detailedDefinition": "气候领导力的本质，不是解决某一年的温度问题，也不仅是制定碳达峰的时间表，而是对人类未来发展轨迹的深刻判断力。这种判断力，决定了我们是否能够真正引导一种新的生态文明秩序的诞生。",
+      "relatedTerms": ["joint-climate-leadership", "resource-redistribution", "tteg"]
+    }
+  ]
+}
