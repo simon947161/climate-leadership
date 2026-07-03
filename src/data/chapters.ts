@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 export interface ChapterMeta {
   id: string;
   number: number;
@@ -17,15 +20,44 @@ export const chaptersZh: ChapterMeta[] = [
     wordCount: 1800,
   },
   // TODO: Add remaining chapters as they are converted
-  // {
-  //   id: 'chapter-2',
-  //   number: 2,
-  //   titleZh: '全球气候区的责任与权利分布',
-  //   titleEn: 'The Distribution of Responsibility and Rights Across Global Climate Zones',
-  //   status: 'pending',
-  // },
 ];
 
 export const chaptersEn: ChapterMeta[] = [
-  // TODO: Add English chapters when available
+  {
+    id: 'chapter-1',
+    number: 1,
+    titleZh: '引言 | 未来的判断力',
+    titleEn: 'Introduction | The Judgment of the Future',
+    status: 'pending', // English translation not yet available
+    wordCount: 0,
+  },
 ];
+
+/**
+ * Get chapter content by language and chapter ID
+ */
+export function getChapterContent(lang: 'zh' | 'en', chapterId: string): string {
+  const dir = lang === 'zh' ? 'zh' : 'en';
+  const filePath = path.join(
+    process.cwd(),
+    'data',
+    'chapters',
+    dir,
+    `${chapterId}.md`
+  );
+  
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    return content;
+  } catch (error) {
+    console.error(`Error reading chapter file: ${filePath}`, error);
+    return `# Chapter Not Found\n\nThe chapter file "${chapterId}.md" (${lang}) could not be loaded.`;
+  }
+}
+
+/**
+ * Get chapter metadata by language
+ */
+export function getChaptersByLang(lang: 'zh' | 'en'): ChapterMeta[] {
+  return lang === 'zh' ? chaptersZh : chaptersEn;
+}

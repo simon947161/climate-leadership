@@ -1,5 +1,6 @@
 import Container from '@/components/Container';
 import Section from '@/components/Section';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { chaptersZh } from '@/data/chapters';
 
 export const metadata = {
@@ -13,6 +14,9 @@ export default function ChaptersDirectoryPage() {
 
   return (
     <Container size="md">
+      {/* Language Switcher */}
+      <LanguageSwitcher currentLang="zh" />
+      
       <Section spacing="lg">
         <header className="mb-8">
           <h1>章节目录</h1>

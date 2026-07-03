@@ -1,13 +1,12 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Container from '@/components/Container';
 import Prose from '@/components/Prose';
 import TermHighlight from '@/components/TermHighlight';
-import { ChapterMeta, chaptersZh } from '@/data/chapters';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { ChapterMeta, getChapterContent, getChaptersByLang } from '@/data/chapters';
 
 interface ChapterPageProps {
   params: Promise<{
@@ -16,6 +15,7 @@ interface ChapterPageProps {
 }
 
 export async function generateStaticParams() {
+  const chaptersZh = getChaptersByLang('zh');
   return chaptersZh
     .filter(chapter => chapter.status === 'complete')
     .map(chapter => ({
@@ -25,6 +25,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ChapterPageProps) {
   const { chapter: chapterId } = await params;
+  const chaptersZh = getChaptersByLang('zh');
   const chapter = chaptersZh.find(c => c.id === chapterId);
   if (!chapter) {
     return { title: 'Chapter Not Found' };
@@ -33,28 +34,6 @@ export async function generateMetadata({ params }: ChapterPageProps) {
     title: `Chapter ${chapter.number}: ${chapter.titleZh} | Climate Leadership`,
     description: chapter.titleEn,
   };
-}
-
-async function getChapterContent(chapterId: string | undefined): Promise<string> {
-  if (!chapterId) {
-    return '# Chapter Not Found\n\nNo chapter ID was provided.';
-  }
-  
-  const filePath = path.join(
-    process.cwd(),
-    'data',
-    'chapters',
-    'zh',
-    `${chapterId}.md`
-  );
-  
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    return content;
-  } catch (error) {
-    console.error(`Error reading chapter file: ${filePath}`, error);
-    return `# Chapter Not Found\n\nThe chapter file "${chapterId}.md" could not be loaded.`;
-  }
 }
 
 /**
@@ -96,8 +75,9 @@ const markdownComponents = {
 
 export default async function ChapterPage({ params }: ChapterPageProps) {
   const { chapter: chapterId } = await params;
+  const chaptersZh = getChaptersByLang('zh');
   const chapter = chaptersZh.find(c => c.id === chapterId);
-  const content = await getChapterContent(chapterId);
+  const content = getChapterContent('zh', chapterId);
   
   // Find previous and next chapters
   const currentIndex = chaptersZh.findIndex(c => c.id === chapterId);
@@ -106,6 +86,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   return (
     <Container size="md">
+      {/* Language Switcher */}
+      <LanguageSwitcher currentLang="zh" chapterId={chapterId} />
+      
       <div className="py-8">
         {/* Chapter Header */}
         <header className="mb-8">
