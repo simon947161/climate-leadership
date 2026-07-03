@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import Prose from '@/components/Prose';
 import TermHighlight from '@/components/TermHighlight';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import PDFDownload from '@/components/PDFDownload';
 import { ChapterMeta, getChapterContent, getChaptersByLang } from '@/data/chapters';
 
 interface ChapterPageProps {
@@ -141,6 +142,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             <div />
           )}
         </nav>
+        
+        {/* PDF Download */}
+        <PDFDownload />
       </div>
     </Container>
   );

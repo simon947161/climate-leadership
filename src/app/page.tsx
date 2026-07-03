@@ -1,5 +1,6 @@
 import Container from '@/components/Container';
 import Section from '@/components/Section';
+import PDFDownload from '@/components/PDFDownload';
 
 export default function Home() {
   return (
@@ -56,12 +57,23 @@ export default function Home() {
               阅读章节（中文）
             </a>
             <a
+              href="/chapters/en"
+              className="inline-block border border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors mr-4"
+            >
+              Read Chapters (English)
+            </a>
+            <a
               href="/design-system"
-              className="inline-block border border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors"
+              className="inline-block border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
             >
               设计系统
             </a>
           </div>
+        </Section>
+
+        {/* PDF Download */}
+        <Section spacing="sm">
+          <PDFDownload />
         </Section>
 
         {/* Footer */}

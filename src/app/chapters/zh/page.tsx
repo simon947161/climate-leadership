@@ -1,6 +1,7 @@
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import PDFDownload from '@/components/PDFDownload';
 import { chaptersZh } from '@/data/chapters';
 
 export const metadata = {
@@ -98,6 +99,9 @@ export default function ChaptersDirectoryPage() {
             ← 返回首页
           </a>
         </div>
+        
+        {/* PDF Download */}
+        <PDFDownload />
       </Section>
     </Container>
   );
