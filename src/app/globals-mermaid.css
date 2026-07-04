@@ -1,0 +1,16 @@
+/* Fix for mermaid flowchart inside <pre> (from ReactMarkdown wrapping) */
+pre:has(.flowchart-wrapper),
+pre:has(.mermaid-wrapper) {
+  all: revert;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  white-space: normal;
+}
+
+pre:has(.flowchart-wrapper) code,
+pre:has(.mermaid-wrapper) code {
+  display: none;
+}

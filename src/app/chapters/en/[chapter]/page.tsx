@@ -85,29 +85,16 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     em: createHighlightedComponent('em'),
     strong: createHighlightedComponent('strong'),
     code: ({ children, className, ...props }: any) => {
-    const isMermaid = className?.includes('language-mermaid');
-    if (isMermaid) {
-      const chartDef = String(children).replace(/\n$/, '');
-      return <Flowchart chart={chartDef} />;
-    }
-    return <code className={className} {...props}>{children}</code>;
-  },
-  pre: ({ children, ...props }: any) => {
-    // ReactMarkdown wraps fenced code in <pre>. For mermaid (handled in code handler),
-    // skip the <pre> wrapper since Flowchart renders its own container.
-    // We detect mermaid by checking if a child has 'chart' prop.
-    const childArray = React.Children.toArray(children);
-    if (childArray.length === 1) {
-      const child = childArray[0];
-      if (typeof child === 'object' && child !== null && 'props' in child) {
-        const el = child as React.ReactElement;
-        if (el.props && typeof el.props === 'object' && 'chart' in el.props) {
-          return <>{children}</>;
-        }
+      const isMermaid = className?.includes('language-mermaid');
+      if (isMermaid) {
+        const chartDef = String(children).replace(/\n$/, '');
+        return <Flowchart chart={chartDef} />;
       }
-    }
-    return <pre {...props}>{children}</pre>;
-  },
+      return <code className={className} {...props}>{children}</code>;
+    },
+    pre: ({ children, ...props }: any) => {
+      return <pre {...props}>{children}</pre>;
+    },
   };
 
   return (
@@ -129,7 +116,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               {/* Status Badge */}
               {chapter.status === 'pending' && (
                 <span className="inline-block mt-2 px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">
-                  🟡 English translation coming soon
+                  English translation coming soon
                 </span>
               )}
             </>
