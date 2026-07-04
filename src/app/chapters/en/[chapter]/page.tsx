@@ -92,6 +92,17 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       }
       return <code className={className} {...props}>{children}</code>;
     },
+    pre: ({ children }: { children?: React.ReactNode }) => {
+      // Avoid wrapping Flowchart (mermaid) inside <pre>
+      const childArray = React.Children.toArray(children);
+      const hasFlowchart = childArray.some(
+        (child: any) => child?.props?.className?.includes?.('flowchart-wrapper')
+      );
+      if (hasFlowchart) {
+        return <>{children}</>;
+      }
+      return <pre>{children}</pre>;
+    },
   };
 
   return (
