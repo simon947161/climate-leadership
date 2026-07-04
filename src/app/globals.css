@@ -239,6 +239,8 @@ a:hover {
   border-collapse: collapse;
   margin-bottom: var(--space-6);
   font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
 }
 
 .prose th {
@@ -262,11 +264,6 @@ a:hover {
 
 .prose tr:hover {
   background-color: #E8F0E0;
-}
-
-.prose table wrapper {
-  overflow-x: auto;
-  margin-bottom: var(--space-6);
 }
 
 /* ---- Container Style ---- */
