@@ -1,6 +1,7 @@
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Prose from '@/components/Prose';
+import Flowchart from '@/components/Flowchart';
 
 export const metadata = {
   title: 'Design System - Climate Leadership',
@@ -116,6 +117,24 @@ export default function DesignSystemPage() {
             </p>
           </div>
         </Section>
+
+        {/* ---- Mermaid Test ---- */}
+        <div id="mermaid-test"><Section spacing="md">
+          <h2>Mermaid Test</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            Flowchart rendering test using the Flowchart component (Batch 7B).
+          </p>
+          <div className="border border-gray-200 rounded-lg p-4 bg-white">
+            <Flowchart
+              chart={`
+                graph TD
+                  A[Observation] --> B[Analysis]
+                  B --> C[Governance Interpretation]
+              `}
+              caption="Figure 0: Minimal test diagram — Observation → Analysis → Governance Interpretation"
+            />
+          </div>
+        </Section></div>
 
       </Section>
     </Container>
