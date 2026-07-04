@@ -85,24 +85,29 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     em: createHighlightedComponent('em'),
     strong: createHighlightedComponent('strong'),
     code: ({ children, className, ...props }: any) => {
-      const isMermaid = className?.includes('language-mermaid');
-      if (isMermaid) {
-        const chartDef = String(children).replace(/\n$/, '');
-        return <div className="mermaid-code-block"><Flowchart chart={chartDef} /></div>;
+    const isMermaid = className?.includes('language-mermaid');
+    if (isMermaid) {
+      const chartDef = String(children).replace(/\n$/, '');
+      return <Flowchart chart={chartDef} />;
+    }
+    return <code className={className} {...props}>{children}</code>;
+  },
+  pre: ({ children, ...props }: any) => {
+    // ReactMarkdown wraps fenced code in <pre>. For mermaid (handled in code handler),
+    // skip the <pre> wrapper since Flowchart renders its own container.
+    // We detect mermaid by checking if a child has 'chart' prop.
+    const childArray = React.Children.toArray(children);
+    if (childArray.length === 1) {
+      const child = childArray[0];
+      if (typeof child === 'object' && child !== null && 'props' in child) {
+        const el = child as React.ReactElement;
+        if (el.props && typeof el.props === 'object' && 'chart' in el.props) {
+          return <>{children}</>;
+        }
       }
-      return <code className={className} {...props}>{children}</code>;
-    },
-    pre: ({ children }: { children?: React.ReactNode }) => {
-      // Avoid wrapping Flowchart (mermaid) inside <pre>
-      const childArray = React.Children.toArray(children);
-      const hasMermaid = childArray.some(
-        (child: any) => child?.props?.className === 'mermaid-code-block'
-      );
-      if (hasMermaid) {
-        return <>{children}</>;
-      }
-      return <pre>{children}</pre>;
-    },
+    }
+    return <pre {...props}>{children}</pre>;
+  },
   };
 
   return (
