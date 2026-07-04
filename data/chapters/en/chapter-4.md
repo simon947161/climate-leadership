@@ -1,5 +1,3 @@
-# Chapter 4: Constructing the AI-Ecological Governance System
-
 If the strategic logic of climate governance concerns the judgment of the future, and the institutional logic concerns the negotiation of values, then the technological logic is centered on one key question:
 
 **Who can translate judgment and values into a functioning, operational system?**

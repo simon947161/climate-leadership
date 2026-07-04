@@ -1,5 +1,3 @@
-# Chapter 3: The Complementarity of Chinese and European Civilizations & the Institutional Bridge
-
 In addressing climate challenges, the most difficult obstacles are not technological gaps or financial distribution—but institutional trust and civilizational mutual recognition.
 
 We are currently in a phase of rapidly emerging multipolarity. Nations no longer draw identity lines based on ideology, but increasingly through their institutional pathways. In this context, China and Europe represent two of the most emblematic institutional-civilizational models:

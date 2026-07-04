@@ -1,5 +1,3 @@
-# Chapter 2: The Distribution of Responsibility and Rights Across Global Climate Zones
-
 We are entering a new era in which climatic zonal sovereignty must be redefined.
 
 In the past, we were accustomed to classifying development stages based on national boundaries, GDP, per capita income, and degree of industrialization. These metrics were then used to determine each country's position and obligations within climate governance. However, the real climate system does not follow national borders. It operates according to units defined by geographical latitude, topography and hydrology, ecological pressure, and population carrying capacity.
