@@ -41,7 +41,7 @@ export function getAllTermsSorted(): Term[] {
  */
 export function findTerm(query: string): Term | undefined {
   const normalizedQuery = query.trim();
-  return terms.find(term => 
+  return terms.find(term =>
     term.nameZh === normalizedQuery ||
     term.nameEn === normalizedQuery ||
     term.abbr === normalizedQuery ||
@@ -62,57 +62,89 @@ export const categoryInfo: Record<TermCategory, { label: string; color: string }
 /**
  * Build a regex pattern that matches any term in the text
  * Returns null if no terms are found
+ *
+ * FIX (Batch 5.5):
+ * - Do NOT split English terms into word parts (caused "for ming" etc.)
+ * - Only match complete terms, not fragments
+ * - Use word boundaries (\b) for English/ASCII terms to avoid partial matches
+ * - Chinese terms matched without boundaries (CJK characters don't use \b)
  */
 export function buildTermPattern(): RegExp | null {
   if (terms.length === 0) return null;
-  
-  // Get all possible names (Chinese, English, abbreviation)
-  const allNames = new Set<string>();
+
+  // Collect only complete term names — never word fragments
+  const allNames: string[] = [];
+
   terms.forEach(term => {
-    allNames.add(term.nameZh);
-    if (term.abbr) allNames.add(term.abbr);
-    // Add English full name parts
-    const englishParts = term.nameEn.split(/[\s()]+/).filter(p => p.length > 2);
-    englishParts.forEach(part => allNames.add(part));
+    // Chinese name — always included
+    if (term.nameZh && term.nameZh.trim().length > 0) {
+      allNames.push(term.nameZh.trim());
+    }
+
+    // Abbreviation — always included
+    if (term.abbr && term.abbr.trim().length > 0) {
+      allNames.push(term.abbr.trim());
+    }
+
+    // English name — only full phrase, NEVER split into word parts
+    if (term.nameEn && term.nameEn.trim().length > 0) {
+      allNames.push(term.nameEn.trim());
+    }
   });
-  
-  // Sort by length (longer first) to ensure longer matches take priority
-  const sortedNames = Array.from(allNames).sort((a, b) => b.length - a.length);
-  
-  if (sortedNames.length === 0) return null;
-  
-  // Escape special regex characters
-  const escapedNames = sortedNames.map(name => 
-    name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  );
-  
-  return new RegExp(`(${escapedNames.join('|')})`, 'g');
+
+  if (allNames.length === 0) return null;
+
+  // Deduplicate and sort longest-first for greedy matching
+  const uniqueNames = Array.from(new Set(allNames))
+    .sort((a, b) => b.length - a.length);
+
+  // Build regex with appropriate boundaries
+  // - English/ASCII terms: wrap with \b to match whole words only
+  // - Chinese/CJK terms: no \b needed, matched as-is
+  const patternParts = uniqueNames.map(name => {
+    // Detect if the term is primarily English/ASCII
+    const asciiChars = name.split('').filter(c => c.charCodeAt(0) < 128).length;
+    const asciiRatio = asciiChars / name.length;
+
+    if (asciiRatio > 0.8) {
+      // English term: add word boundaries to prevent partial matches
+      // Escape the name, then wrap with \b
+      const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return `\\b${escaped}\\b`;
+    } else {
+      // Chinese/CJK term: no word boundaries needed
+      const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return escaped;
+    }
+  });
+
+  return new RegExp(`(${patternParts.join('|')})`, 'g');
 }
 
 /**
  * Highlight terms in plain text
  * Returns an array of segments, each marked as text or term reference
  */
-export type TextSegment = 
+export type TextSegment =
   | { type: 'text'; content: string }
   | { type: 'term'; content: string; termId: string; isFirstAppearance: boolean };
 
 export function highlightTerms(text: string): TextSegment[] {
   const pattern = buildTermPattern();
   if (!pattern) return [{ type: 'text', content: text }];
-  
+
   const segments: TextSegment[] = [];
   const seenTermIds = new Set<string>();
   let lastIndex = 0;
   let match: RegExpExecArray | null;
-  
+
   // Reset regex state
   pattern.lastIndex = 0;
-  
+
   while ((match = pattern.exec(text)) !== null) {
     const matchedText = match[0];
     const matchIndex = match.index;
-    
+
     // Add text before the match
     if (matchIndex > lastIndex) {
       segments.push({
@@ -120,7 +152,7 @@ export function highlightTerms(text: string): TextSegment[] {
         content: text.substring(lastIndex, matchIndex),
       });
     }
-    
+
     // Find which term this is
     const term = findTerm(matchedText);
     if (term) {
@@ -140,10 +172,10 @@ export function highlightTerms(text: string): TextSegment[] {
         content: matchedText,
       });
     }
-    
+
     lastIndex = matchIndex + matchedText.length;
   }
-  
+
   // Add remaining text
   if (lastIndex < text.length) {
     segments.push({
@@ -151,6 +183,6 @@ export function highlightTerms(text: string): TextSegment[] {
       content: text.substring(lastIndex),
     });
   }
-  
+
   return segments;
 }

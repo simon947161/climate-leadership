@@ -1,5 +1,3 @@
-# Chapter 6: Global Climate Flow Dynamics and the Architecture of Spatial Governance
-
 ## 6.1 Spatial System Logic from Global Thermodynamic Mechanisms
 
 In constructing the spatial dimension of climate governance, we must first recognize a fundamental truth:

@@ -1,20 +1,3 @@
-# Chapter 7: Climate Finance, RWA, and New Paths to Fair Governance
-
-When we discuss the institutional implementation of climate governance, we are essentially discussing the organization, allocation, and trust surrounding resources.
-
-Climate finance is not merely a technical tool—it is a question of trust mechanisms; not just about capital flows, but about civilizational structures.
-
-Especially when we attempt to integrate ecological behaviors into the financial system through RWA (Real-World Assets), we must confront a central dilemma:
-
-**Can emotional differences, civilizational structures, and the rift between tradition and modernity be reconciled within a unified financial mechanism?**
-
-Behind this challenge lies not only asset classification logic, but deeper questions:
-- Who defines value?
-- Who controls the language of asset verification?
-- Who designs the risk assessment models?
-
-At the heart of all these is the construction of institutional trust.
-
 ## 7.1 Trust Disparities in the Global Financial System
 
 Mainstream green finance today is built on a **mathematical-trust model**:

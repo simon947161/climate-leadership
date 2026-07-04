@@ -1,5 +1,3 @@
-# Chapter 10: The Awakening of the System — The Ecological Chain and the Genesis of Future Civilization
-
 We are witnessing the awakening of a system.
 
 Not the awakening of a nation, nor a mere technological breakthrough, but the awakening of a civilizational consciousness: Humanity is finally beginning to understand that we are just one link in the ecological system—and that AI is not merely a tool, but an extension of our cognitive structure.

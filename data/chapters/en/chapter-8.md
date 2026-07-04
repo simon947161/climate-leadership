@@ -1,5 +1,3 @@
-# Chapter 8: Consensus Mechanisms and the Ethical Framework of AI Governance
-
 ## Introduction: Standing at the System's Summit
 
 When human institutions become trapped in a worship of efficiency and control logic, we must ask again:

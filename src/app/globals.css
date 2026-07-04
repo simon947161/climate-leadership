@@ -233,6 +233,42 @@ a:hover {
   font-style: italic;
 }
 
+/* ---- Prose Table Styles ---- */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-6);
+  font-size: 0.95rem;
+}
+
+.prose th {
+  background-color: var(--color-background-alt);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.prose td {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.prose tr:nth-child(even) {
+  background-color: var(--color-background-alt);
+}
+
+.prose tr:hover {
+  background-color: #E8F0E0;
+}
+
+.prose table wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-6);
+}
+
 /* ---- Container Style ---- */
 .container {
   max-width: var(--page-max-width);

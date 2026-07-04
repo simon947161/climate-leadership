@@ -1,5 +1,3 @@
-# Chapter 9: NGO-Centred Social Collaboration Mechanisms
-
 No climate governance system can rely solely on government efforts, nor be dominated entirely by corporations.
 
 The essence of climate leadership is a transgenerational mechanism of value transmission, which requires long-term commitment, public spirit, and moral responsibility. Compared to this, governments are constrained by political cycles, and businesses by profit motives. Non-Governmental Organizations (NGOs), however, serve as vital carriers of public ethics and institutional continuity.
