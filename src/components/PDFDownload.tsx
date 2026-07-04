@@ -6,9 +6,9 @@ interface PDFDownloadProps {
 }
 
 /**
- * PDFDownload - Button/link to download the full book
+ * PDFDownload - Button/link to download the full book PDF
  *
- * Links to the Word document (.docx) file in the public folder.
+ * Links to the PDF file in the public folder.
  * Supports both Chinese and English versions.
  */
 export default function PDFDownload({
@@ -17,14 +17,14 @@ export default function PDFDownload({
 }: PDFDownloadProps) {
   const fileMap = {
     zh: {
-      href: '/climate-leadership-zh.docx',
-      label: '下载全书（中文版）',
-      filename: 'climate-leadership-zh.docx',
+      href: '/climate-leadership-zh.pdf',
+      label: '下载全书（中文版 PDF）',
+      filename: 'climate-leadership-zh.pdf',
     },
     en: {
-      href: '/climate-leadership-en.docx',
-      label: 'Download Full Book (English)',
-      filename: 'climate-leadership-en.docx',
+      href: '/climate-leadership-en.pdf',
+      label: 'Download Full Book (English PDF)',
+      filename: 'climate-leadership-en.pdf',
     },
   };
 
@@ -81,7 +81,7 @@ export default function PDFDownload({
         )}
       </div>
       <p className="text-sm text-gray-600 mt-2">
-        Word 文档（.docx格式，可用 Microsoft Word 或 WPS 打开）
+        PDF 格式（约 1-2MB）
       </p>
     </div>
   );
