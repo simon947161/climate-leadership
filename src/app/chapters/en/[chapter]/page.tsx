@@ -88,17 +88,17 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       const isMermaid = className?.includes('language-mermaid');
       if (isMermaid) {
         const chartDef = String(children).replace(/\n$/, '');
-        return <Flowchart chart={chartDef} />;
+        return <div className="mermaid-code-block"><Flowchart chart={chartDef} /></div>;
       }
       return <code className={className} {...props}>{children}</code>;
     },
     pre: ({ children }: { children?: React.ReactNode }) => {
       // Avoid wrapping Flowchart (mermaid) inside <pre>
       const childArray = React.Children.toArray(children);
-      const hasFlowchart = childArray.some(
-        (child: any) => child?.props?.className?.includes?.('flowchart-wrapper')
+      const hasMermaid = childArray.some(
+        (child: any) => child?.props?.className === 'mermaid-code-block'
       );
-      if (hasFlowchart) {
+      if (hasMermaid) {
         return <>{children}</>;
       }
       return <pre>{children}</pre>;
