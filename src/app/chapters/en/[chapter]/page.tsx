@@ -151,7 +151,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         </nav>
         
         {/* PDF Download */}
-        <PDFDownload />
+        <PDFDownload lang="en" />
       </div>
     </Container>
   );

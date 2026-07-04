@@ -73,7 +73,7 @@ export default function Home() {
 
         {/* PDF Download */}
         <Section spacing="sm">
-          <PDFDownload />
+          <PDFDownload lang="both" />
         </Section>
 
         {/* Footer */}
