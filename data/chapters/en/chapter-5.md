@@ -20,6 +20,13 @@ These phenomena reveal that the "thermal signals" of carbon behaviors exhibit st
 
 This system emphasizes a tri-dimensional coordination logic (heat flow - time rhythm - spatial dynamics), enabling precise heat release, timely rainfall induction, and minimally invasive climate engineering.
 
+```mermaid
+graph TD
+  A[Observation] --> B[Thermal-Time-Environment Analysis]
+  B --> C[Governance Interpretation]
+  C --> D[ESG / Policy / Finance Decision]
+```
+
 ## III. TTEG × Ecological Chain: Institutional Interoperability Design
 
 The integration of TTEG theory with the Ecological Chain is a bi-directional coupling of dynamic signals and governance feedback:

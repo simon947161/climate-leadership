@@ -7,6 +7,7 @@ import Prose from '@/components/Prose';
 import TermHighlight from '@/components/TermHighlight';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import PDFDownload from '@/components/PDFDownload';
+import Flowchart from '@/components/Flowchart';
 import { ChapterMeta, getChapterContent, getChaptersByLang } from '@/data/chapters';
 
 interface ChapterPageProps {
@@ -83,6 +84,14 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     th: createHighlightedComponent('th'),
     em: createHighlightedComponent('em'),
     strong: createHighlightedComponent('strong'),
+    code: ({ children, className, ...props }: any) => {
+      const isMermaid = className?.includes('language-mermaid');
+      if (isMermaid) {
+        const chartDef = String(children).replace(/\n$/, '');
+        return <Flowchart chart={chartDef} />;
+      }
+      return <code className={className} {...props}>{children}</code>;
+    },
   };
 
   return (
