@@ -107,8 +107,8 @@ export const chaptersEn: ChapterMeta[] = [
     number: 1,
     titleZh: '引言 | 未来的判断力',
     titleEn: 'Introduction | The Judgment of the Future',
-    status: 'pending',
-    wordCount: 0,
+    status: 'complete',
+    wordCount: 1400,
   },
   {
     id: 'chapter-2',
