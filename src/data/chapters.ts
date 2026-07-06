@@ -8,6 +8,7 @@ export interface ChapterMeta {
   titleEn: string;
   status: 'complete' | 'pending';
   wordCount?: number;
+  translationStatus?: 'human-reviewed' | 'machine-draft' | 'author-review-needed';
 }
 
 export const chaptersZh: ChapterMeta[] = [
@@ -109,6 +110,7 @@ export const chaptersEn: ChapterMeta[] = [
     titleEn: 'Introduction | The Judgment of the Future',
     status: 'complete',
     wordCount: 1400,
+    translationStatus: 'machine-draft',
   },
   {
     id: 'chapter-2',

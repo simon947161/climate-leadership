@@ -54,6 +54,12 @@ export default async function ChaptersPage() {
                       🟡 English translation coming soon
                     </span>
                   )}
+                  
+                  {chapter.translationStatus === 'machine-draft' && (
+                    <span className="inline-block mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full border border-blue-200">
+                      Machine draft · Author review needed
+                    </span>
+                  )}
                 </div>
                 
                 <div className="flex-shrink-0 ml-4">

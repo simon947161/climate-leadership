@@ -119,6 +119,13 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
                   English translation coming soon
                 </span>
               )}
+              
+              {/* Translation Status Label */}
+              {chapter.translationStatus === 'machine-draft' && (
+                <span className="inline-block mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full border border-blue-200">
+                  Machine draft · Author review needed
+                </span>
+              )}
             </>
           ) : (
             <h1>Chapter Not Found</h1>
