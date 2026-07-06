@@ -2,12 +2,15 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
 import Container from '@/components/Container';
 import Prose from '@/components/Prose';
 import TermHighlight from '@/components/TermHighlight';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import PDFDownload from '@/components/PDFDownload';
+import ChapterTOC from '@/components/ChapterTOC';
 import { ChapterMeta, getChapterContent, getChaptersByLang } from '@/data/chapters';
+import { extractHeadings } from '@/lib/extractHeadings';
 
 interface ChapterPageProps {
   params: Promise<{
@@ -79,7 +82,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const chaptersZh = getChaptersByLang('zh');
   const chapter = chaptersZh.find(c => c.id === chapterId);
   const content = getChapterContent('zh', chapterId);
-  
+  const headings = extractHeadings(content);
+
   // Find previous and next chapters
   const currentIndex = chaptersZh.findIndex(c => c.id === chapterId);
   const prevChapter = currentIndex > 0 ? chaptersZh[currentIndex - 1] : null;
@@ -89,7 +93,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     <Container size="md">
       {/* Language Switcher */}
       <LanguageSwitcher currentLang="zh" chapterId={chapterId} />
-      
+
       <div className="py-8">
         {/* Chapter Header */}
         <header className="mb-8">
@@ -106,12 +110,15 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           )}
         </header>
 
+        {/* Table of Contents */}
+        <ChapterTOC headings={headings} />
+
         {/* Chapter Content */}
         <Prose>
           <div className="chapter-content">
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]} 
-              rehypePlugins={[rehypeHighlight]}
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeHighlight, rehypeSlug]}
               components={markdownComponents}
             >
               {content}
@@ -142,7 +149,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             <div />
           )}
         </nav>
-        
+
         {/* PDF Download */}
         <PDFDownload />
       </div>

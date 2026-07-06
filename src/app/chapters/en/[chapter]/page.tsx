@@ -2,13 +2,16 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
 import Container from '@/components/Container';
 import Prose from '@/components/Prose';
 import TermHighlight from '@/components/TermHighlight';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import PDFDownload from '@/components/PDFDownload';
 import Flowchart from '@/components/Flowchart';
+import ChapterTOC from '@/components/ChapterTOC';
 import { ChapterMeta, getChapterContent, getChaptersByLang } from '@/data/chapters';
+import { extractHeadings } from '@/lib/extractHeadings';
 
 interface ChapterPageProps {
   params: Promise<{
@@ -43,7 +46,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const chaptersEn = getChaptersByLang('en');
   const chapter = chaptersEn.find(c => c.id === chapterId);
   const content = getChapterContent('en', chapterId);
-  
+  const headings = extractHeadings(content);
+
   // Find previous and next chapters
   const currentIndex = chaptersEn.findIndex(c => c.id === chapterId);
   const prevChapter = currentIndex > 0 ? chaptersEn[currentIndex - 1] : null;
@@ -101,7 +105,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
     <Container size="md">
       {/* Language Switcher */}
       <LanguageSwitcher currentLang="en" chapterId={chapterId} />
-      
+
       <div className="py-8">
         {/* Chapter Header */}
         <header className="mb-8">
@@ -112,14 +116,14 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
               </p>
               <h1 className="mb-2">{chapter.titleEn}</h1>
               <p className="text-lg text-gray-600">{chapter.titleZh}</p>
-              
+
               {/* Status Badge */}
               {chapter.status === 'pending' && (
                 <span className="inline-block mt-2 px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">
                   English translation coming soon
                 </span>
               )}
-              
+
               {/* Translation Status Label */}
               {chapter.translationStatus === 'machine-draft' && (
                 <span className="inline-block mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full border border-blue-200">
@@ -132,12 +136,15 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           )}
         </header>
 
+        {/* Table of Contents */}
+        <ChapterTOC headings={headings} />
+
         {/* Chapter Content */}
         <Prose>
           <div className="chapter-content">
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]} 
-              rehypePlugins={[rehypeHighlight]}
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeHighlight, rehypeSlug]}
               components={markdownComponents}
             >
               {content}
@@ -168,7 +175,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             <div />
           )}
         </nav>
-        
+
         {/* PDF Download */}
         <PDFDownload lang="en" />
       </div>
