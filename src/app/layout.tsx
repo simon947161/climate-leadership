@@ -25,6 +25,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/chapters/en", label: "Chapters" },
   { href: "/concept-map", label: "Concept Map" },
+  { href: "/glossary", label: "Glossary" },
   { href: "/design-system", label: "Design" },
 ];
 
