@@ -7,21 +7,24 @@ interface LanguageSwitcherProps {
 }
 
 /**
- * LanguageSwitcher - Switches between Chinese and English versions
- * 
- * Placed at the top of chapter pages and chapter list page
+ * LanguageSwitcher — bilingual toggle between Chinese and English chapter pages.
+ *
+ * - The active-language button stays on the current path (shows current page language).
+ * - The inactive-language button switches to the equivalent page in the other language.
+ * - Works on both chapter pages (chapterId provided) and chapter list pages (no chapterId).
  */
 export default function LanguageSwitcher({ currentLang, chapterId }: LanguageSwitcherProps) {
-  const basePath = chapterId 
-    ? `/chapters/${currentLang === 'zh' ? 'en' : 'zh'}/${chapterId}`
-    : `/chapters/${currentLang === 'zh' ? 'en' : 'zh'}`;
-  
+  // Explicit paths for each language
+  const zhPath = `/chapters/zh${chapterId ? `/${chapterId}` : ''}`;
+  const enPath = `/chapters/en${chapterId ? `/${chapterId}` : ''}`;
+
   return (
     <Container size="md">
       <div className="flex justify-end py-2">
         <div className="inline-flex rounded-md shadow-sm" role="group">
+          {/* 中文 button — always links to ZH path */}
           <a
-            href={currentLang === 'zh' ? basePath : `/chapters/zh${chapterId ? `/${chapterId}` : ''}`}
+            href={zhPath}
             className={`px-4 py-2 text-sm font-medium rounded-l-lg border ${
               currentLang === 'zh'
                 ? 'bg-primary text-white border-primary'
@@ -31,8 +34,9 @@ export default function LanguageSwitcher({ currentLang, chapterId }: LanguageSwi
           >
             中文
           </a>
+          {/* English button — always links to EN path */}
           <a
-            href={currentLang === 'en' ? basePath : `/chapters/en${chapterId ? `/${chapterId}` : ''}`}
+            href={enPath}
             className={`px-4 py-2 text-sm font-medium rounded-r-lg border-t border-b border-r ${
               currentLang === 'en'
                 ? 'bg-primary text-white border-primary'
