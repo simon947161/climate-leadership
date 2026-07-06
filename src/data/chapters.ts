@@ -184,6 +184,14 @@ export const chaptersEn: ChapterMeta[] = [
     status: 'complete',
     wordCount: 3000,
   },
+  {
+    id: 'references',
+    number: 0,
+    titleZh: '参考文献',
+    titleEn: 'References',
+    status: 'complete',
+    wordCount: 1200,
+  },
 ];
 
 /**
